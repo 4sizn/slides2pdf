@@ -18,7 +18,7 @@ const html =
   let current = html;
   let n = 0;
   do {
-    await page.screenshot({ path: `a/example${++n}.png` });
+    await page.screenshot({ path: `output/example${++n}.png` });
     current = page.url();
     await page.keyboard.press("ArrowDown");
   } while (current !== page.url());
@@ -28,6 +28,6 @@ const html =
 })();
 
 async function init() {
-  await fs.remove("a");
-  await fs.promises.mkdir("a");
+  await fs.remove("output");
+  await fs.promises.mkdir("output");
 }
