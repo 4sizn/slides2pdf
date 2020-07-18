@@ -1,5 +1,6 @@
 {
   "name": "slides2pdf",
+  "description": "simple way generate 2 pdf by using puppeteer",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -7,6 +8,14 @@
     "start": "node index.js",
     "test": "jest"
   },
+  "keywords": [
+    "pdf",
+    "puppeteer",
+    "slides",
+    "pdf-puppeteer",
+    "puppeteer-pdf"
+  ],
+  "author": "4sizn",
   "dependencies": {
     "fs-extra": "^9.0.1",
     "meow": "^7.0.1",
