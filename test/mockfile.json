@@ -1,0 +1,17 @@
+{
+  "options": {
+    "name": "default",
+    "debug": false,
+    "width": 1280,
+    "height": 800,
+    "output": "pdf",
+    "except": [],
+    "html": "https://infinite-red.slides.com/gantlaborde/adventures-in-ai-javascript",
+    "content": {
+      "guide": false
+    }
+  },
+  "puppeteerArgs": {
+    "headless": false
+  }
+}

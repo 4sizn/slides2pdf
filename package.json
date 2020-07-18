@@ -1,0 +1,17 @@
+{
+  "name": "slides2pdf",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "meow": "^7.0.1",
+    "puppeteer": "^5.2.0"
+  },
+  "devDependencies": {
+    "jest": "^26.1.0"
+  }
+}
