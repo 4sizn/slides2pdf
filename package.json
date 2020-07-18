@@ -8,6 +8,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "fs-extra": "^9.0.1",
     "meow": "^7.0.1",
     "puppeteer": "^5.2.0"
   },
