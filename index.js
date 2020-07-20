@@ -1,14 +1,12 @@
 const puppeteer = require("puppeteer");
 const fs = require("fs-extra");
-const easyimg = require("easyimage");
+const PDFDocument = require("pdfkit");
 const MAIN_SELECTOR = ".reveal-frame";
 const DECK_CUDOS_SELECTOR = ".deck-kudos";
 const CONTROLS_SELECTOR = "aside.controls";
 
-const viewPort = { width: 1280, height: 800 };
-
-const html =
-  "https://infinite-red.slides.com/gantlaborde/adventures-in-ai-javascript#/";
+const viewPort = { width: 800, height: 600 };
+const html = "https://slides.com/news/slide-settings/";
 
 (async () => {
   //set local directory before launch
@@ -45,10 +43,17 @@ const html =
   } while (current !== page.url());
   await browser.close();
 
-  await easyimg.convert({
-    src: "output" + "/*." + "png",
-    dst: "result" + ".pdf",
-  });
+  //   generate pdf
+  const doc = new PDFDocument({ autoFirstPage: false, layout: "landscape" });
+  doc.pipe(fs.createWriteStream("./output/example.pdf"));
+
+  for (let i = 1; i <= n; i++) {
+    doc.addPage({ size: [width, height] });
+    doc.image(`./output/example${i}.png`, 0, 0);
+  }
+
+  doc.flushPages();
+  doc.end();
 })();
 
 async function init() {
@@ -60,9 +65,9 @@ async function settings(page) {
   return await page.evaluate(
     ([a, b, c]) => {
       const controlEl = document.querySelector(b);
-      controlEl.parentNode.removeChild(controlEl);
+      controlEl && controlEl.parentNode.removeChild(controlEl);
       const deckEl = document.querySelector(c);
-      deckEl.parentNode.removeChild(deckEl);
+      deckEl && deckEl.parentNode.removeChild(deckEl);
       const mainEl = document.querySelector(a);
 
       return [mainEl.clientWidth, mainEl.clientHeight];
